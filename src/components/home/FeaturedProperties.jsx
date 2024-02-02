@@ -34,13 +34,16 @@ const FeaturedProperties = () => {
   let content = properties?.slice(0, 12)?.map((item) => (
     <div className="item" key={item.id}>
       <div className="feat_property">
+      <Link to={`/listing-details-v1/${item.id}`} className="fp_price">
         <div className="thumb">
+        
           <img
         
             className="img-whp w-100 h-100 cover"
             src={item.img}
             alt="fp1.jpg"
           />
+        
           <div className="thmb_cntnt">
             <ul className="tag mb0">
               {item.saleTag.map((val, i) => (
@@ -51,7 +54,7 @@ const FeaturedProperties = () => {
             </ul>
             {/* End .tag */}
 
-            <ul className="icon mb0">
+            {/* <ul className="icon mb0">
               <li className="list-inline-item">
                 <a href="#">
                   <span className="flaticon-transfer-1"></span>
@@ -62,7 +65,7 @@ const FeaturedProperties = () => {
                   <span className="flaticon-heart"></span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
             {/* End .icon */}
 
             <Link to={`/listing-details-v1/${item.id}`} className="fp_price">
@@ -71,6 +74,7 @@ const FeaturedProperties = () => {
             </Link>
           </div>
         </div>
+        </Link>
         {/* End .thumb */}
 
         <div className="details">

@@ -81,7 +81,7 @@ const DetailsContent = () => {
       {/* End .location_area */}
 
       <div className="application_statics mt30" id="tab-4">
-        <h4 className="mb30">Floor plans</h4>
+        <h4 className="mb30"></h4>
         <div className="faq_according style2">
           <FloorPlans />
         </div>

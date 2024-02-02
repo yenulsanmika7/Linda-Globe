@@ -46,7 +46,7 @@ const ListingDynamicDetailsV1 = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-8">
-              <DetailsContent />
+              <DetailsContent property={property}/>
             </div>
             {/* End details content .col-lg-8 */}
 

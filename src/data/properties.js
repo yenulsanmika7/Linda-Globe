@@ -1,15 +1,35 @@
 const properties = [
   {
+    
     id: 1,
     img: "/assets/images/property/fp1.jpg",
-    price: "13000",
+    videoId: "",
+    thum:"/assets/images/background/",
+    price: "00000",
     lat: 40.7279707552121,
     long: -74.07152705896405,
     type: "Apartment",
     title: "Luxury Family Home",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Sale"],
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
+    saleTag: ["Featured", "Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan a1.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan b1.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     garages: "yes",
     itemDetails: [
       {
@@ -50,39 +70,59 @@ St, Los Angeles, CA 900015`,
   {
     id: 2,
     img: "/assets/images/property/fp2.jpg",
+    videoId: "rwarhHq0wmY",
+    thum:"/assets/images/background/8.jpg",
     price: "14000",
-    type: "Bungalow",
-    title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    type: "LAND",
+    title: "Invite To Invest Proposal (MEEPE LAND )",
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
 lat: 34.1738017565271,
     long: -118.34227408812067,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "For Sale"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan a2.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan b2.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     garages: "no",
     itemDetails: [
-      {
-        name: "Beds",
-        number: "2",
-      },
-      {
-        name: "Baths",
-        number: "2",
-      },
       {
         name: "SqFt",
         number: "5280",
       },
+      {
+        name: "",
+        number: "",
+      },
+      {
+        name: "",
+        number: "",
+      },
+         
     ],
     posterAvatar: "/assets/images/property/pposter2.png",
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2p.jpg",
+      "/assets/images/property/3p.jpg",
+      "/assets/images/property/4p.jpg",
+      "/assets/images/property/5p.jpg",
+      "/assets/images/property/6p.jpg",
+      "/assets/images/property/7p.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -98,39 +138,58 @@ lat: 34.1738017565271,
   {
     id: 3,
     img: "/assets/images/property/fp3.jpg",
+    videoId: "KPFPTeA2fic",
+    thum:"/assets/images/background/9.jpg",
     price: "13000",
-    type: "Bungalow",
-    title: "Single Family Home",
-    location: `1421 San Pedro
-    St, Los Angeles, CA 900015`,
+    type: "LAND",
+    title: "WANDURAMBA LAND",
+    location: `Wanduramba,Galle`,
     lat: 29.38690953884771,
     long: -94.91651439187791,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan a3.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan b3.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"This land is about 10 acres with freehold deeds cultivating tea and cinnamon in a beautiful foggy environment in the Waduramba area of Galle, bordering a small reserve. Currently earning a net income of over Rs. 120,000.The land has a newly built air-conditioned  luxury bungalow with hot water facity.A small 2 roomed house for workers to stay. There are 2 wells here which have no shortage of flowing spring water. The scheduled carpeted road to this land is located at a distance of about 14 km from the Baddegama entrance of Southern Expressway. Also this beautiful land is situated close to the Kanneliya Reserve distance is about 10 Km.",
+    Second_para:"The land with the existing bungalow, due to its location and ever-changing beautiful environment, is more suitable for local or foreign investors looking to sustain the tourism industry. Isolated and tranquil, surrounded by farmland and frequented by a variety of animals, this beautiful environment is a great attraction for local and foreign tourists alike. This property sale is being handled by a trusted company comprised with chartered engineers, architects, quantity surveyors, landscape architecture designers and land surveyors. Their correct consultation will achieve the client desired needs.For both local and foreign investors looking to purchase the property, the consulting firm that sells the land has various investment plans regarding the property. Such investment plans may be more vital for foreign investors.",
+    
     garages: "others",
     itemDetails: [
-      {
-        name: "Beds",
-        number: "3",
-      },
-      {
-        name: "Baths",
-        number: "2",
-      },
       {
         name: "SqFt",
         number: "3280",
       },
+      {
+        name: "",
+        number: "",
+      },
+      {
+        name: "",
+        number: "",
+      },
+     
     ],
     posterAvatar: "/assets/images/property/pposter3.png",
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2w.jpg",
+      "/assets/images/property/3w.jpg",
+      "/assets/images/property/4w.jpg",
+      "/assets/images/property/5w.jpg",
+      "/assets/images/property/6w.jpg",
+      "/assets/images/property/7w.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -146,14 +205,33 @@ lat: 34.1738017565271,
   {
     id: 4,
     img: "/assets/images/property/fp15.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "11000",
     type: "House",
-    title: "Gorgeous Villa Bay View",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
-lat: 41.62158564223682,
+    title: "WATAREKA HOUSE",
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
+     lat: 41.62158564223682,
     long: -82.15625432727268,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Sold"],
+    //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"Land with a house near to Kalegana, Galle – Sri LankaDifferent ways of investments for interested investors in local or foreign  It is a 114 P land with huge house with luxury facilities. House comprises with 6 bedrooms & 4 bathrooms. Ample space inside the house with all facilities. Very spacious land for various investments other than the house.Tourism potentials of Galle fort, Beautiful beaches, and supermarkets are within few kilometers,Close proximity to Karapitiya hospital, Hapugala Engineering faculty.",
+    Second_para:"Investment opportunity -	Ideal for maintaining a villa by properly utilizing the spacious land. 	Or client’s own desire Other opportunities -	This property sale is being handled by a trusted company comprised with chartered engineers, architects, quantity surveyors and landscape architecture designers. Their correct consultation at the client needs.",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -172,12 +250,12 @@ lat: 41.62158564223682,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2wa.jpg",
+      "/assets/images/property/3wa.jpg",
+      "/assets/images/property/4wa.jpg",
+      "/assets/images/property/5wa.jpg",
+      "/assets/images/property/6wa.jpg",
+      "/assets/images/property/7wa.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -194,14 +272,33 @@ lat: 41.62158564223682,
   {
     id: 5,
     img: "/assets/images/property/fp16.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "17000",
     type: "Land",
     title: "Renovated Apartment",
     lat: 39.62158564223682,
     long: -80.15625432727268,
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -220,12 +317,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -241,14 +338,33 @@ St, Los Angeles, CA 900015`,
   {
     id: 6,
     img: "/assets/images/property/fp17.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "16000",
     type: "Single Family Home",
     title: "Gorgeous Villa Bay View",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
 lat: 40.7279707552121,
         long: -74.07152705896405,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -267,12 +383,12 @@ lat: 40.7279707552121,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -288,12 +404,31 @@ lat: 40.7279707552121,
   {
     id: 7,
     img: "/assets/images/property/fp18.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "15000",
     type: "Apartment",
     title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -312,12 +447,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -333,12 +468,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 8,
     img: "/assets/images/property/fp19.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "12000",
     type: "Condo",
     title: "Gorgeous Villa Bay View",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -357,12 +511,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -378,12 +532,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 9,
     img: "/assets/images/property/fp20.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "14000",
     type: "Single Family Home",
     title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -402,12 +575,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -423,12 +596,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 10,
     img: "/assets/images/property/fp15.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "15000",
     type: "Apartment",
     title: "Luxury Family Home",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -447,12 +639,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -468,12 +660,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 11,
     img: "/assets/images/property/fp16.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "19000",
     type: "Villa",
     title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -492,12 +703,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -514,12 +725,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 12,
     img: "/assets/images/property/fp17.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "13000",
     type: "Bungalow",
     title: "Luxury Family Home",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -538,12 +768,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -560,12 +790,30 @@ St, Los Angeles, CA 900015`,
   {
     id: 13,
     img: "/assets/images/property/fp4.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "11000",
     type: "Apartment",
     title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
     itemDetails: [
       {
         name: "Beds",
@@ -584,12 +832,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",
@@ -606,6 +854,8 @@ St, Los Angeles, CA 900015`,
   {
     id: 14,
     img: "/assets/images/property/fp5.jpg",
+    videoId: "WjtzpodMUNM",
+    thum:"/assets/images/background/7.jpg",
     price: "13000",
     type: "Condo",
     title: "Luxury Family Home",
@@ -652,12 +902,31 @@ St, Los Angeles, CA 900015`,
   {
     id: 15,
     img: "/assets/images/property/fp6.jpg",
+    videoId: "",
+    thum:"/assets/images/background/",
     price: "17000",
     type: "Single Family Home",
     title: "Renovated Apartment",
-    location: `1421 San Pedro
-St, Los Angeles, CA 900015`,
+    location: `1421 San PedroSt, Los Angeles, CA 900015`,
     saleTag: ["Featured", "For Rent"],
+     //Floor plan
+    //Ground Floor
+    Size1:"",
+    Rooms1:"",
+    Baths1:"",
+    plan_src1:"/assets/images/resource/floor_plan.png",
+    plan_paragraph1:"",
+    //First Floor
+    Size2:"",
+    Rooms2:"",
+    Baths2:"",
+    plan_src2:"/assets/images/resource/floor_plan.png",
+    plan_paragraph2:"",
+    //Description
+    First_para:"",
+    Second_para:"",
+    
+    
     itemDetails: [
       {
         name: "Beds",
@@ -676,12 +945,12 @@ St, Los Angeles, CA 900015`,
     posterName: "Ali Tufan",
     postedYear: "1 year ago",
     imgList: [
-      "/assets/images/property/2.jpg",
-      "/assets/images/property/3.jpg",
-      "/assets/images/property/4.jpg",
-      "/assets/images/property/5.jpg",
-      "/assets/images/property/6.jpg",
-      "/assets/images/property/7.jpg",
+      "/assets/images/property/2a.jpg",
+      "/assets/images/property/3a.jpg",
+      "/assets/images/property/4a.jpg",
+      "/assets/images/property/5a.jpg",
+      "/assets/images/property/6a.jpg",
+      "/assets/images/property/7a.jpg",
     ],
     imgList2: [
       "/assets/images/property/ls2.jpg",

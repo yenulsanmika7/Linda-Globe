@@ -1,6 +1,6 @@
 
 
-const FloorPlans = () => {
+const FloorPlans = ({property}) => {
   return (
     <div className="accordion" id="accordionExample">
       <div className="card floor_plan">
@@ -15,19 +15,19 @@ const FloorPlans = () => {
               aria-controls="collapseOne"
             >
               <ul className="mb0 d-flex align-items-cener flex-wrap">
-                <li className="d-inline-flex list-inline-item">First Floor</li>
+                <li className="d-inline-flex list-inline-item">Ground Floor</li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Size:</p> <span>1267 Sqft</span>
+                  <p>Size:</p> <span>{property.size1}</span>
                 </li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Rooms:</p> <span>670 Sqft</span>
+                  <p>Rooms:</p> <span>{property.Rooms2}</span>
                 </li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Baths:</p> <span>530 Sqft</span>
+                  <p>Baths:</p> <span>{property.Baths2}</span>
                 </li>
-                <li className="d-inline-flex list-inline-item">
+                {/*<li className="d-inline-flex list-inline-item">
                   <p>Price:</p> <span>$1489</span>
-                </li>
+  </li>*/}
               </ul>
             </button>
           </h2>
@@ -42,15 +42,12 @@ const FloorPlans = () => {
             <img
             
               className="img-fluid w-100 h-100 cover"
-              src="/assets/images/resource/floor_plan.png"
+              //src="/assets/images/resource/floor_plan.png"
+              src={property.plan_src1}
               alt="floor_plan.png"
             />
             <p>
-              Plan description. Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-              veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-              nisl ut aliquip ex ea commodo consequat.
+            {property.plan_paragraph1}
             </p>
           </div>
         </div>
@@ -69,17 +66,17 @@ const FloorPlans = () => {
               <ul className="mb0 d-flex align-items-cener flex-wrap">
                 <li className="d-inline-flex list-inline-item">First Floor</li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Size:</p> <span>1267 Sqft</span>
+                  <p>Size:</p> <span>{property.Size2}</span>
                 </li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Rooms:</p> <span>670 Sqft</span>
+                  <p>Rooms:</p> <span>{property.Rooms2}</span>
                 </li>
                 <li className="d-inline-flex list-inline-item">
-                  <p>Baths:</p> <span>530 Sqft</span>
+                  <p>Baths:</p> <span>{property.Baths2}</span>
                 </li>
-                <li className="d-inline-flex list-inline-item">
+                {/*<li className="d-inline-flex list-inline-item">
                   <p>Price:</p> <span>$1489</span>
-                </li>
+</li>*/}
               </ul>
             </button>
           </h2>
@@ -94,15 +91,12 @@ const FloorPlans = () => {
             <img
              
               className="img-fluid"
-              src="/assets/images/resource/floor_plan.png"
+              //src="/assets/images/resource/floor_plan2.png"
+              src={property.plan_src2}
               alt="floor_plan.png"
             />
             <p>
-              Plan description. Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-              veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-              nisl ut aliquip ex ea commodo consequat.
+            {property.plan_paragraph2}
             </p>
           </div>
         </div>
