@@ -2,7 +2,8 @@
 import { Link,useLocation } from "react-router-dom";
 import { isSinglePageActive } from "../../../../utils/daynamicNavigation";
 
-const MyAccount = () => {
+// eslint-disable-next-line react/prop-types
+const MyAccount = ({ user }) => {
   const { pathname } = useLocation()
   const profileMenuItems = [
     { id: 1, name: "My Profile", ruterPath: "/my-profile" },
@@ -22,8 +23,8 @@ const MyAccount = () => {
           alt="e1.png"
         />
         <p>
-          Ali Tufan <br />
-          <span className="address">alitufan@gmail.com</span>
+          <br />
+          <span className="address"></span>
         </p>
       </div>
       {/* End user_set_header */}
@@ -36,7 +37,7 @@ const MyAccount = () => {
             className="dropdown-item"
             style={
               isSinglePageActive(`${item.ruterPath}`, pathname)
-                ? { color: "#ff5a5f" }
+                ? { color: "#000" }
                 : undefined
             }
           >

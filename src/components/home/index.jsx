@@ -12,6 +12,7 @@ import WhyChoose from "../common/WhyChoose";
 import PopupSignInUp from "../common/PopupSignInUp";
 
 const Index = () => {
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}

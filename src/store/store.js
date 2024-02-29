@@ -1,16 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import agentSlice from "../features/agent/agentSlice";
-import { api } from "../features/api/api";
-import filterSlice from "../features/filter/filterSlice";
-import propertiesSlice from "../features/properties/propertiesSlice";
+import { userSignUpReducer, userLoginReducer } from "@/reducers/userReducers";
+import { otpVerificationReducer } from "@/reducers/otpReducers";
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
-        [api.reducerPath]: api.reducer,
-        properties: propertiesSlice,
-        filter: filterSlice,
-        agent: agentSlice,
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(api.middleware),
-});
+        userSignUp: userSignUpReducer,
+        userLogin: userLoginReducer,
+        otpVerification: otpVerificationReducer,
+    }
+})
+
+export default store;

@@ -1,11 +1,8 @@
-
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderMenuContent from "./HeaderMenuContent";
 
-
-const Header = () => {
+const Header = () => {  
   const [navbar, setNavbar] = useState(false);
 
   const changeBackground = () => {

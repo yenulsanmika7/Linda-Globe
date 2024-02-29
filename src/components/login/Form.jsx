@@ -1,6 +1,35 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+
+import { login } from "@/actions/userActions";
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSignUp = (event) => {
+    login({ email, password }, dispatch)
+      .then(() => {
+        navigate('/');
+      })
+      .catch(error => {
+        event.preventDefault()
+        console.error('Signup failed', error);
+      });
+  }
+
   return (
     <form action="#">
       <div className="heading text-center">
@@ -19,7 +48,9 @@ const Form = () => {
           type="text"
           className="form-control"
           required
-          placeholder="User Name Or Email"
+          placeholder="Email address"
+          value={email}
+          onChange={handleEmailChange}
         />
         <div className="input-group-prepend">
           <div className="input-group-text">
@@ -35,6 +66,8 @@ const Form = () => {
           className="form-control"
           required
           placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
         />
         <div className="input-group-prepend">
           <div className="input-group-text">
@@ -64,7 +97,7 @@ const Form = () => {
       </div>
       {/* End .form-group */}
 
-      <button type="submit" className="btn btn-log w-100 btn-thm">
+      <button type="submit" className="btn btn-log w-100 btn-thm" onClick={handleSignUp}>
         Log In
       </button>
       {/* login button */}

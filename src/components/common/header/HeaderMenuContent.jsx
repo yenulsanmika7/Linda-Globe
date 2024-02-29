@@ -1,17 +1,12 @@
+import { useSelector } from 'react-redux';
+import { Link , useLocation } from "react-router-dom";
+import MyAccount from "./dashboard/MyAccount"
 
-import { Link , useLocation} from "react-router-dom";
-
-
-
-const HeaderMenuContent = ({ float = "" }) => {
-  const { pathname } = useLocation()
+const HeaderMenuContent = ({ float = "" }) => {    
+  const { user } = useSelector((state) => state.userLogin);
+  const { pathname } = useLocation();  
 
   const home = [
-    {
-      id: 1,
-      name: "Home 1",
-      routerPath: "/",
-    },
     // { id: 2, name: "Home 2", routerPath: "/home-2" },
     // {
     //   id: 3,
@@ -462,24 +457,33 @@ const HeaderMenuContent = ({ float = "" }) => {
       </li>
       {/* End .dropitem */}
 
-      <li className={`list-inline-item list_s ${float}`}>
-        <a
-          href="#"
-          className="btn flaticon-user"
-          data-bs-toggle="modal"
-          data-bs-target=".bd-example-modal-lg"
-        >
-          <span className="dn-lg">Login/Register</span>
-        </a>
-      </li>
+      { user === null ? (
+          <li className={`list-inline-item list_s ${float}`}>
+            <a
+              href="#"
+              className="btn flaticon-user"
+              data-bs-toggle="modal"
+              data-bs-target=".bd-example-modal-lg"
+            >
+              <span className="dn-lg">Login/Register</span>
+            </a>
+        </li>
+      ) : (
+        <MyAccount user={user} />
+      )}   
+
       {/* End .dropitem */}
 
-      <li className={`list-inline-item add_listing ${float}`}>
-        <Link to="/create-listing">
-          <span className="flaticon-plus"></span>
-          <span className="dn-lg"> Create Listing</span>
-        </Link>
-      </li>
+      { user && (
+        <li className={`list-inline-item add_listing ${float}`}>
+         <Link to="/create-listing">
+           <span className="flaticon-plus"></span>
+           <span className="dn-lg"> Create Listing</span>
+         </Link>
+       </li>
+      )}
+
+     
       {/* End .dropitem */}
     </ul>
   );
