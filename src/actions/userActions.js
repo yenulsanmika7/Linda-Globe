@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,    
+    USER_LOGIN_FAIL,   
+    USER_LOGOUT, 
     USER_SIGNUP_REQUEST,
     USER_SIGNUP_SUCCESS,
     USER_SIGNUP_FAIL
@@ -52,4 +53,9 @@ export const signUp = async (userData, dispatch) => {
                 payload: error.response ? error.response.data : 'Could not connect to the website',
             });
         });
+}
+
+export const logout = (dispatch) => {
+    localStorage.removeItem("USER-TOKEN");
+    dispatch({ type: USER_LOGOUT });
 }

@@ -1,16 +1,31 @@
 
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isSinglePageActive } from "../../../../utils/daynamicNavigation";
+import { useDispatch } from "react-redux";
+import { logout } from "@/actions/userActions";
 
 // eslint-disable-next-line react/prop-types
 const MyAccount = ({ user }) => {
-  const { pathname } = useLocation()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleLogout = () => {
+    dispatch(logout)
+      .then(() => {
+        navigate('/');
+      })
+      .catch(() => {
+        console.log('Error while logging out!')
+      })
+  }
+
   const profileMenuItems = [
     { id: 1, name: "My Profile", ruterPath: "/my-profile" },
     { id: 2, name: " My Message", ruterPath: "/my-message" },
     { id: 3, name: " My Favourite", ruterPath: "/my-favourites" },
     { id: 4, name: " My Package", ruterPath: "/my-package" },
-    { id: 5, name: " Log out", ruterPath: "/login" },
+    { id: 5, name: " Log out", onClick: handleLogout  },
   ];
 
   return (
@@ -23,8 +38,8 @@ const MyAccount = ({ user }) => {
           alt="e1.png"
         />
         <p>
-          <br />
-          <span className="address"></span>
+          {user.username}<br />
+          <span className="address">{user.email}</span>
         </p>
       </div>
       {/* End user_set_header */}
@@ -40,6 +55,7 @@ const MyAccount = ({ user }) => {
                 ? { color: "#000" }
                 : undefined
             }
+            onClick={item.onClick}
           >
             {item.name}
           </Link>

@@ -2,7 +2,7 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
-    // USER_LOGOUT,
+    USER_LOGOUT,
     USER_SIGNUP_REQUEST,
     USER_SIGNUP_SUCCESS,
     USER_SIGNUP_FAIL
@@ -29,6 +29,12 @@ export const userSignUpReducer = (state=initialState, action) => {
             return {
                 loading: false,
                 error: action.payload,
+            };
+        case USER_LOGOUT: 
+            return {
+                ...state,
+                userToken: null,
+                user: null,
             };
         default:
             return state;

@@ -469,7 +469,22 @@ const HeaderMenuContent = ({ float = "" }) => {
             </a>
         </li>
       ) : (
-        <MyAccount user={user} />
+        <li className="user_setting">
+          <div className="dropdown">
+            <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <img
+              
+                className="rounded-circle"
+                src="/assets/images/team/e1.png"
+                alt="e1.png"
+              />
+              <span className="dn-1199 ms-1">{user.username}</span>
+            </a>
+            <div className="dropdown-menu">
+              <MyAccount user={user} />
+            </div>
+          </div>
+        </li>
       )}   
 
       {/* End .dropitem */}
