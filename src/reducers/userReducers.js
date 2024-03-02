@@ -1,11 +1,20 @@
 import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,
+    USER_LOGIN_FAIL,    
     USER_LOGOUT,
+
     USER_SIGNUP_REQUEST,
     USER_SIGNUP_SUCCESS,
-    USER_SIGNUP_FAIL
+    USER_SIGNUP_FAIL,
+
+    PROFILE_PIC_UPDATE_REQUEST,
+    PROFILE_PIC_UPDATE_SUCCESS,
+    PROFILE_PIC_UPDATE_FAIL,
+
+    GET_USER_DATA_REQUEST,
+    GET_USER_DATA_SUCCESS,
+    GET_USER_DATA_FAIL,
 } from '../constants/userTypes';
 
 const initialState = {
@@ -59,6 +68,48 @@ export const userLoginReducer = (state=initialState, action) =>  {
                 loading: false,
                 error: action.payload,
             };
+        case GET_USER_DATA_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case GET_USER_DATA_SUCCESS:                
+            return {
+                ...state,
+                loading: false,
+                user: action.payload, 
+            };        
+        case GET_USER_DATA_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+}
+
+export const profilePicUpdateReducer = (state=initialState, action) => {
+    switch (action.type) {
+        case PROFILE_PIC_UPDATE_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            }
+        case PROFILE_PIC_UPDATE_SUCCESS:
+            return {
+                ...state, 
+                loading: false,
+                user: action.payload.user,
+                error: null,
+            }
+        case PROFILE_PIC_UPDATE_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
         default:
             return state;
     }

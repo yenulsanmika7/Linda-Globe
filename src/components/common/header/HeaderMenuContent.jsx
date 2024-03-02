@@ -1,10 +1,33 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
 import { Link , useLocation } from "react-router-dom";
 import MyAccount from "./dashboard/MyAccount"
+import { getUserData } from "@/actions/userActions";
+
+import ToastContainer from '../../../components/ToastContainer';
 
 const HeaderMenuContent = ({ float = "" }) => {    
-  const { user } = useSelector((state) => state.userLogin);
   const { pathname } = useLocation();  
+  const dispatch = useDispatch()
+
+  const userToken = localStorage.getItem('USER-TOKEN');
+  const { user } = useSelector((state) => state.userLogin);
+
+  console.log(userToken, user);
+    
+  useEffect(() => {
+    if (userToken && !user) {
+      getUserData(dispatch)
+        .then(() => {
+          console.log('Get user data successfully!')
+        })
+        .catch(() => {
+          console.log('Error while getting data!')
+        })
+    }  
+  }, [dispatch, userToken, user]);  
+
+  const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
 
   const home = [
     // { id: 2, name: "Home 2", routerPath: "/home-2" },
@@ -239,6 +262,7 @@ const HeaderMenuContent = ({ float = "" }) => {
       className="ace-responsive-menu text-end d-lg-block d-none"
       data-menu-style="horizontal"
     >
+      <ToastContainer />
       <li className="dropitem">
         <a
           href="#"
@@ -475,10 +499,11 @@ const HeaderMenuContent = ({ float = "" }) => {
               <img
               
                 className="rounded-circle"
-                src="/assets/images/team/e1.png"
-                alt="e1.png"
+                src={`${API_URL}${user.profileImageUrl}`}
+                alt="Profile Image"
+                style={{ cursor: 'pointer', width: '45px', height: '45px' }}
               />
-              <span className="dn-1199 ms-1">{user.username}</span>
+              <span className="dn-1199 ms-1">Yenul_San</span>
             </a>
             <div className="dropdown-menu">
               <MyAccount user={user} />

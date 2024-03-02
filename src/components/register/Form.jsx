@@ -14,6 +14,13 @@ const Form = () => {
   const navigate = useNavigate();  
   
   const { error } = useSelector((state) => state.otpVerification);
+  const { user } = useSelector((state) => state.userLogin);
+
+  useEffect(() => {
+    if (user && localStorage.getItem("USER-TOKEN")) {
+      navigate('/')
+    }
+  })
 
   function maskEmail(email) {
     const [localPart, domainPart] = email.split('@');

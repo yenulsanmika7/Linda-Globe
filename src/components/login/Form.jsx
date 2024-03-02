@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { login } from "@/actions/userActions";
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.userLogin);
+
+  useEffect(() => {
+    if (user && localStorage.getItem("USER-TOKEN")) {
+      navigate('/')
+    }
+  })
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +27,10 @@ const Form = () => {
     setPassword(event.target.value);
   };
 
-  const handleSignUp = (event) => {
-    login({ email, password }, dispatch)
+  const handleSignUp = async (event) => {
+    await login({ email, password }, dispatch)
       .then(() => {
-        navigate('/');
+        window.location.reload();
       })
       .catch(error => {
         event.preventDefault()

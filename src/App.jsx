@@ -68,8 +68,7 @@ if (typeof window !== "undefined") {
   import("bootstrap");
 }
 
-function App() {
-
+function App() { 
   return (
       <BrowserRouter>
           <Provider store={store}>

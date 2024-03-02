@@ -1,14 +1,25 @@
-
+import { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isSinglePageActive } from "../../../../utils/daynamicNavigation";
 import { useDispatch } from "react-redux";
+import {  toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { logout } from "@/actions/userActions";
+import { profilePicUpdate } from "@/actions/userActions";
 
 // eslint-disable-next-line react/prop-types
 const MyAccount = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const fileInputRef = useRef(null);
+
+  const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
+
+  const handleUserImageClick = () => {
+    fileInputRef.current.click();
+  };
 
   const handleLogout = () => {
     dispatch(logout)
@@ -18,6 +29,47 @@ const MyAccount = ({ user }) => {
       .catch(() => {
         console.log('Error while logging out!')
       })
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData()
+      formData.append('profileImage', file)
+      // eslint-disable-next-line react/prop-types
+      formData.append('email', user.email)
+
+      profilePicUpdate(formData, dispatch)
+        .then(() => {
+          toast.success('Profile image added succesfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });    
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000);         
+        })
+        .catch(() => {
+          toast.error('Try again later!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        })
+    }
   }
 
   const profileMenuItems = [
@@ -30,12 +82,18 @@ const MyAccount = ({ user }) => {
 
   return (
     <>
-      <div className="user_set_header">
-        <img
-         
+      <div className="user_set_header" onClick={handleUserImageClick}>
+        <img         
           className="float-start"
-          src="/assets/images/team/e1.png"
-          alt="e1.png"
+          src={`${API_URL}${user.profileImageUrl}`}
+          alt="Profile Image"
+          style={{ cursor: 'pointer', width: '45px', height: '45px' }}
+        />
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          style={{ display: 'none' }} 
         />
         <p>
           {user.username}<br />
@@ -55,7 +113,7 @@ const MyAccount = ({ user }) => {
                 ? { color: "#000" }
                 : undefined
             }
-            onClick={item.onClick}
+            onClick={() => item.onClick?.()}
           >
             {item.name}
           </Link>

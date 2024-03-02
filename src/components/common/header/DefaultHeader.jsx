@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import HeaderMenuContent from "./HeaderMenuContent";
 
 const Header = () => {  
-  const [navbar, setNavbar] = useState(false);
+  const [navbar, setNavbar] = useState(false);  
 
   const changeBackground = () => {
     if (window.scrollY >= 95) {

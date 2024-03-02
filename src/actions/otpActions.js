@@ -6,10 +6,13 @@ import {
     OTP_CODE_FAIL
 } from '../constants/otpTypes';
 
+// eslint-disable-next-line no-undef
+const API_URL = import.meta.env.NODE_BACKEND_URL; 
+
 export const otpVerifiy = (email, dispatch) => {
     dispatch({ loading: true, type: OTP_CODE_REQUEST });
 
-    const url = 'http://localhost:3500/sendOTP';
+    const url = `${API_URL}/sendOTP`;
 
     return axios.post(url, email) 
         .then(({ data }) => {
