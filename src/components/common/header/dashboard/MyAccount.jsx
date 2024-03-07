@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isSinglePageActive } from "../../../../utils/daynamicNavigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {  toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,11 +9,13 @@ import { logout } from "@/actions/userActions";
 import { profilePicUpdate } from "@/actions/userActions";
 
 // eslint-disable-next-line react/prop-types
-const MyAccount = ({ user }) => {
+const MyAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const fileInputRef = useRef(null);
+  
+  const { user } = useSelector((state) => state.userLogin);
 
   const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
 

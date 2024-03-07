@@ -3,11 +3,12 @@ import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
 import CreateList from "./CreateList";
 import DetailedInfo from "./DetailedInfo";
-import FloorPlans from "./FloorPlans";
 import LocationField from "./LocationField";
 import PropertyMediaUploader from "./PropertyMediaUploader";
 
-const index = () => {
+const index = () => {  
+  const formData = new FormData();
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -66,37 +67,30 @@ const index = () => {
                         <h3 className="mb30">Create Listing</h3>
                       </div>
 
-                      <CreateList />
+                      <CreateList formData={formData} />
                     </div>
                   </div>
                   <div className="my_dashboard_review mt30">
                     <div className="row">
                       <div className="col-lg-12">
-                        <h3 className="mb30">Location</h3>
+                        <h3 className="mb30" >Location</h3>
                       </div>
 
-                      <LocationField />
+                      <LocationField formData={formData} />
                     </div>
                   </div>
                   <div className="my_dashboard_review mt30">
                     <div className="col-lg-12">
                       <h3 className="mb30">Detailed Information</h3>
                     </div>
-                    <DetailedInfo />
+                    <DetailedInfo formData={formData} />
                   </div>
                   <div className="my_dashboard_review mt30">
                     <div className="col-lg-12">
-                      <h3 className="mb30">Property media</h3>
+                      <h3 className="mb30">Property media and Add!</h3>
                     </div>
-                    <PropertyMediaUploader />
-                  </div>
-                  <div className="my_dashboard_review mt30">
-                    <div className="col-lg-12">
-                      <h3 className="mb30">Floor Plans</h3>
-                      <button className="btn admore_btn mb30">Add More</button>
-                    </div>
-                    <FloorPlans />
-                  </div>
+                    <PropertyMediaUploader formData={formData} />
+                  </div>                  
                 </div>
                 {/* End .col */}
               </div>

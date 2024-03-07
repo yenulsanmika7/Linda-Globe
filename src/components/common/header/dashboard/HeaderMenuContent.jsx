@@ -1,30 +1,59 @@
-import { useSelector } from 'react-redux';
-import { Link,useLocation } from "react-router-dom";
-import MyAccount from "./MyAccount";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { Link , useLocation } from "react-router-dom";
+import MyAccount from "./MyAccount"
+import { getUserData } from "@/actions/userActions";
+import { allProperties } from "@/actions/propertyActions"
 
-const HeaderMenuContent = ({ float = "" }) => {
+import ToastContainer from '../../../../components/ToastContainer';
+
+const HeaderMenuContent = ({ float = "" }) => {    
+  const { pathname } = useLocation();  
+  const dispatch = useDispatch()
+
+  const userToken = localStorage.getItem('USER-TOKEN');
   const { user } = useSelector((state) => state.userLogin);
-  const { pathname } = useLocation()
+
+  // console.log(userToken, user);
+    
+  useEffect(() => {
+    if (userToken && !user) {
+      getUserData(dispatch)
+        .then(() => {
+          console.log('Get user data successfully!')
+        })
+        .catch(() => {
+          console.log('Error while getting data!')
+        })
+    }      
+  }, [dispatch, userToken, user]); 
+
+  useEffect(() => {
+    allProperties(dispatch)
+      .then(() => {
+        console.log("Get property data successfully!");
+      })
+      .catch(() => {
+        console.log("Error while getting property data!")
+      })
+  }, [dispatch])
+
+  const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
 
   const home = [
-    {
-      id: 1,
-      name: "Home 1",
-      routerPath: "/",
-    },
-    { id: 2, name: "Home 2", routerPath: "/home-2" },
-    {
-      id: 3,
-      name: "Home 3",
-      routerPath: "/home-3",
-    },
-    { id: 4, name: "Home 4", routerPath: "/home-4" },
-    { id: 5, name: "Home 5", routerPath: "/home-5" },
-    { id: 6, name: "Home 6", routerPath: "/home-6" },
-    { id: 7, name: "Home 7", routerPath: "/home-7" },
-    { id: 8, name: "Home 8", routerPath: "/home-8" },
-    { id: 9, name: "Home 9", routerPath: "/home-9" },
-    { id: 10, name: "Home 10", routerPath: "/home-10" },
+    // { id: 2, name: "Home 2", routerPath: "/home-2" },
+    // {
+    //   id: 3,
+    //   name: "Home 3",
+    //   routerPath: "/home-3",
+    // },
+    // { id: 4, name: "Home 4", routerPath: "/home-4" },
+    // { id: 5, name: "Home 5", routerPath: "/home-5" },
+    // { id: 6, name: "Home 6", routerPath: "/home-6" },
+    // { id: 7, name: "Home 7", routerPath: "/home-7" },
+    // { id: 8, name: "Home 8", routerPath: "/home-8" },
+    // { id: 9, name: "Home 9", routerPath: "/home-9" },
+    // { id: 10, name: "Home 10", routerPath: "/home-10" },
   ];
 
   const listing = [
@@ -122,7 +151,7 @@ const HeaderMenuContent = ({ float = "" }) => {
         },
         {
           name: "Agent Details",
-          routerPath: "/agent-details/1",
+          routerPath: "/agent-details/3",
         },
       ],
     },
@@ -140,7 +169,7 @@ const HeaderMenuContent = ({ float = "" }) => {
         },
         {
           name: "Agencies Details",
-          routerPath: "/agency-details/3",
+          routerPath: "/agency-details/1",
         },
       ],
     },
@@ -195,11 +224,11 @@ const HeaderMenuContent = ({ float = "" }) => {
       items: [
         {
           name: "Single V1",
-          routerPath: "/listing-details-v1/4",
+          routerPath: "/listing-details-v1/3",
         },
         {
           name: "Single V2",
-          routerPath: "/listing-details-v2/1",
+          routerPath: "/listing-details-v2/2",
         },
         {
           name: "Single V3",
@@ -220,7 +249,7 @@ const HeaderMenuContent = ({ float = "" }) => {
     {
       id: 4,
       name: "Blog Details",
-      routerPath: "/blog-details/1",
+      routerPath: "/blog-details/2",
     },
   ];
 
@@ -244,6 +273,7 @@ const HeaderMenuContent = ({ float = "" }) => {
       className="ace-responsive-menu text-end d-lg-block d-none"
       data-menu-style="horizontal"
     >
+      <ToastContainer />
       <li className="dropitem">
         <a
           href="#"
@@ -370,7 +400,7 @@ const HeaderMenuContent = ({ float = "" }) => {
                     <Link
                       to={val.routerPath}
                       className={
-                        pathname?.split('/')[1] === val.routerPath?.split('/')[1]
+                        pathname?.split('/')[1] === val.routerPath?.split('/')[1] 
                         // val.routerPath + "/[id]" === pathname?.split('/')[1]
                           ? "ui-active"
                           : undefined
@@ -438,7 +468,7 @@ const HeaderMenuContent = ({ float = "" }) => {
               <Link
                 to={item.routerPath}
                 className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1] 
+                  pathname?.split('/')[1] === item.routerPath?.split('/')[1]
                   // item.routerPath + "/[id]" === pathname?.split('/')[1]
                     ? "ui-active"
                     : undefined
@@ -462,30 +492,49 @@ const HeaderMenuContent = ({ float = "" }) => {
       </li>
       {/* End .dropitem */}
 
-      <li className="user_setting">
-        <div className="dropdown">
-          <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
-            <img
-             
-              className="rounded-circle"
-              src="/assets/images/team/e1.png"
-              alt="e1.png"
-            />
-            <span className="dn-1199 ms-1">Ali Tufan</span>
-          </a>
-          <div className="dropdown-menu">
-            <MyAccount user={user} />
+      { user === null ? (
+          <li className={`list-inline-item list_s ${float}`}>
+            <a
+              href="#"
+              className="btn flaticon-user"
+              data-bs-toggle="modal"
+              data-bs-target=".bd-example-modal-lg"
+            >
+              <span className="dn-lg">Login/Register</span>
+            </a>
+        </li>
+      ) : (
+        <li className="user_setting">
+          <div className="dropdown">
+            <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <img
+              
+                className="rounded-circle"
+                src={`${API_URL}${user.profileImageUrl}`}
+                alt="Profile Image"
+                style={{ cursor: 'pointer', width: '45px', height: '45px' }}
+              />
+              <span className="dn-1199 ms-1">Yenul_San</span>
+            </a>
+            <div className="dropdown-menu">
+              <MyAccount user={user} />
+            </div>
           </div>
-        </div>
-      </li>
-      {/* End ."user_setting */}
+        </li>
+      )}   
 
-      <li className={`list-inline-item add_listing ${float}`}>
-        <Link to="/create-listing">
-          <span className="flaticon-plus"></span>
-          <span className="dn-lg"> Create Listing</span>
-        </Link>
-      </li>
+      {/* End .dropitem */}
+
+      { user && (
+        <li className={`list-inline-item add_listing ${float}`}>
+         <Link to="/create-listing">
+           <span className="flaticon-plus"></span>
+           <span className="dn-lg"> Create Listing</span>
+         </Link>
+       </li>
+      )}
+
+     
       {/* End .dropitem */}
     </ul>
   );

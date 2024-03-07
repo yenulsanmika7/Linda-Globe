@@ -6,6 +6,7 @@ import ProfileInfo from "./ProfileInfo";
 import SocialMedia from "./SocialMedia";
 
 const index = () => {
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}

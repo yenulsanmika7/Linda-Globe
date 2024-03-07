@@ -25,7 +25,7 @@ const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;
 export const login = async (loginData, dispatch) => {
     dispatch({ loading: true, type: USER_LOGIN_REQUEST })
 
-    const url = `${API_URL}/signIn`;
+    const url = `${API_URL}/auth/signIn`;
 
     axios.post(url, loginData)
         .then(({ data }) => {
@@ -49,7 +49,7 @@ export const login = async (loginData, dispatch) => {
 export const signUp = async (userData, dispatch) => {  
     dispatch({ loading: true, type: USER_SIGNUP_REQUEST });
 
-    const url = `${API_URL}/signUp`;
+    const url = `${API_URL}/auth/signUp`;
     
     axios.post(url, userData)
         .then(({ data }) => {            
@@ -70,17 +70,18 @@ export const signUp = async (userData, dispatch) => {
 export const logout = async (dispatch) => {
     localStorage.removeItem("USER-TOKEN");
     dispatch({ type: USER_LOGOUT });
+    window.location.reload();
 }
 
 // USER UPDATE ACTIONS
 export const profilePicUpdate = async (formData, dispatch) => {
     dispatch({ loading: true, type: PROFILE_PIC_UPDATE_REQUEST });
 
-    const url = `${API_URL}/uploadProfilePic`;
+    const url = `${API_URL}/user/uploadProfilePic/profile`;
 
     await axios.post(url, formData, {
         headers: {
-          'Content-Type': 'multipart/form/data',
+          'Content-Type': 'multipart/form-data',
         },
     })
     .then(({ data }) => {
@@ -123,5 +124,6 @@ export const getUserData = async (dispatch) => {
             type: GET_USER_DATA_FAIL,
             payload: error.response ? error.response.data : 'Could not fetch user data',
         });
+        dispatch(logout());
     });
 }

@@ -5,134 +5,48 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addLength } from "../../../features/properties/propertiesSlice";
-import properties from "../../../data/properties";
 
+const API_URL = import.meta.env.VITE_NODE_BACKEND_URL; 
 
 const FeaturedItem = () => {
-  const {
-    keyword,
-    location,
-    status,
-    propertyType,
-    price,
-    bathrooms,
-    bedrooms,
-    garages,
-    yearBuilt,
-    area,
-    amenities,
-  } = useSelector((state) => state.properties);
-  const { statusType, featured, isGridOrList } = useSelector(
+  // const {
+  //   keyword,
+  //   location,
+  //   status,
+  //   propertyType,
+  //   price,
+  //   bathrooms,
+  //   bedrooms,
+  //   garages,
+  //   yearBuilt,
+  //   area,
+  //   amenities,
+  // } = useSelector((state) => state.properties);
+  const { isGridOrList } = useSelector(
     (state) => state.filter
   );
 
   const dispatch = useDispatch();
 
-  // keyword filter
-  const keywordHandler = (item) =>
-    item.title.toLowerCase().includes(keyword?.toLowerCase());
+  const { properties } = useSelector((state) => state.allProperties);
+  console.log("Properties", properties);
 
-  // location handler
-  const locationHandler = (item) => {
-    return item.location.toLowerCase().includes(location.toLowerCase());
-  };
-
-  // status handler
-  const statusHandler = (item) =>
-    item.type.toLowerCase().includes(status.toLowerCase());
-
-  // properties handler
-  const propertiesHandler = (item) =>
-    item.type.toLowerCase().includes(propertyType.toLowerCase());
-
-  // price handler
-  const priceHandler = (item) =>
-    item.price < price?.max && item.price > price?.min;
-
-  // bathroom handler
-  const bathroomHandler = (item) => {
-    if (bathrooms !== "") {
-      return item.itemDetails[1].number == bathrooms;
-    }
-    return true;
-  };
-
-  // bedroom handler
-  const bedroomHandler = (item) => {
-    if (bedrooms !== "") {
-      return item.itemDetails[0].number == bedrooms;
-    }
-    return true;
-  };
-
-  // garages handler
-  const garagesHandler = (item) =>
-    garages !== ""
-      ? item.garages?.toLowerCase().includes(garages.toLowerCase())
-      : true;
-
-  // built years handler
-  const builtYearsHandler = (item) =>
-    yearBuilt !== "" ? item?.built == yearBuilt : true;
-
-  // area handler
-  const areaHandler = (item) => {
-    if (area.min !== 0 && area.max !== 0) {
-      if (area.min !== "" && area.max !== "") {
-        return (
-          parseInt(item.itemDetails[2].number) > area.min &&
-          parseInt(item.itemDetails[2].number) < area.max
-        );
-      }
-    }
-    return true;
-  };
-
-  // advanced option handler
-  const advanceHandler = (item) => {
-    if (amenities.length !== 0) {
-      return amenities.find((item2) =>
-        item2.toLowerCase().includes(item.amenities.toLowerCase())
-      );
-    }
-    return true;
-  };
-
-  // status filter
-  const statusTypeHandler = (a, b) => {
-    if (statusType === "recent") {
-      return a.created_at + b.created_at;
-    } else if (statusType === "old") {
-      return a.created_at - b.created_at;
-    } else if (statusType === "") {
-      return a.created_at + b.created_at;
-    }
-  };
-
-  // featured handler
-  const featuredHandler = (item) => {
-    if (featured !== "") {
-      return item.featured === featured;
-    }
-    return true;
-  };
-
-  // status handler
-  let content = properties
-    ?.slice(0, 10)
-    ?.filter(keywordHandler)
-    ?.filter(locationHandler)
-    ?.filter(statusHandler)
-    ?.filter(propertiesHandler)
-    ?.filter(priceHandler)
-    ?.filter(bathroomHandler)
-    ?.filter(bedroomHandler)
-    ?.filter(garagesHandler)
-    ?.filter(builtYearsHandler)
-    ?.filter(areaHandler)
-    ?.filter(advanceHandler)
-    ?.sort(statusTypeHandler)
-    ?.filter(featuredHandler)
+  let content;
+  if (properties && Array.isArray(properties)) {
+    content =properties?.slice(0, 10)
+    // ?.filter(keywordHandler)
+    // ?.filter(locationHandler)
+    // ?.filter(statusHandler)
+    // ?.filter(propertiesHandler)
+    // ?.filter(priceHandler)
+    // ?.filter(bathroomHandler)
+    // ?.filter(bedroomHandler)
+    // ?.filter(garagesHandler)
+    // ?.filter(builtYearsHandler)
+    // ?.filter(areaHandler)
+    // ?.filter(advanceHandler)
+    // ?.sort(statusTypeHandler)
+    // ?.filter(featuredHandler)
     .map((item) => (
       <div
         className={`${
@@ -149,7 +63,7 @@ const FeaturedItem = () => {
             <img
             
               className="img-whp w-100 h-100 cover"
-              src={item.img}
+              src={`${API_URL}${item.imageUrls[0]}`}
               alt="fp1.jpg"
             />
             <div className="thmb_cntnt">
@@ -195,10 +109,10 @@ const FeaturedItem = () => {
               </h4>
               <p>
                 <span className="flaticon-placeholder"></span>
-                {item.location}
+                {item.location.country}
               </p>
 
-              <ul className="prop_details mb0">
+              {/* <ul className="prop_details mb0">
                 {item.itemDetails.map((val, i) => (
                   <li className="list-inline-item" key={i}>
                     <a href="#">
@@ -206,32 +120,14 @@ const FeaturedItem = () => {
                     </a>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
-            {/* End .tc_content */}
-
-            <div className="fp_footer">
-              <ul className="fp_meta float-start mb0">
-                <li className="list-inline-item">
-                  <Link to="/agent-v2">
-                    <img
-                    
-                      src={item.posterAvatar}
-                      alt="pposter1.png"
-                    />
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link to="/agent-v2">{item.posterName}</Link>
-                </li>
-              </ul>
-              <div className="fp_pdate float-end">{item.postedYear}</div>
-            </div>
-            {/* End .fp_footer */}
-          </div>
+            {/* End .tc_content */}            
+          </div> 
         </div>
       </div>
     ));
+  }
 
   // add length of filter items
   useEffect(() => {

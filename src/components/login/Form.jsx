@@ -30,7 +30,8 @@ const Form = () => {
   const handleSignUp = async (event) => {
     await login({ email, password }, dispatch)
       .then(() => {
-        window.location.reload();
+        // window.location.reload();
+        navigate('/')
       })
       .catch(error => {
         event.preventDefault()

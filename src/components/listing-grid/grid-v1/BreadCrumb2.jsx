@@ -4,7 +4,7 @@ const BreadCrumb2 = () => {
   return (
     <div className="breadcrumb_content style2">
       <BreadCrumb title="Simple Listing – Grid V1" />
-      <h2 className="breadcrumb_title">Simple Listing – Grid View</h2>
+      <h2 className="breadcrumb_title">All Properties</h2>
     </div>
   );
 };

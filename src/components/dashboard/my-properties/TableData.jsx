@@ -1,7 +1,49 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteProperty } from "@/actions/propertyActions"
+import {  toast } from 'react-toastify';
+import { allProperties } from "@/actions/propertyActions";
+import 'react-toastify/dist/ReactToastify.css';
 
-import properties from "../../../data/properties";
+const API_URL = import.meta.env.VITE_NODE_BACKEND_URL; 
 
 const TableData = () => {
+  const { properties } = useSelector((state) => state.allProperties); 
+  const dispatch = useDispatch();
+  
+  const handleDeleteSubmit = (itemId) => {
+    alert('Are you sure about this action?');
+    deleteProperty(itemId, dispatch)
+      .then(() => {  
+        toast.success('Property deleted succesfully!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });       
+      })
+      .catch(() => {
+        toast.error('Server error!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      })
+  }
+
+  useEffect(() => {
+    dispatch(allProperties);
+  }, [dispatch]);
+
   let theadConent = [
     "Listing Title",
     "Date published",
@@ -17,7 +59,7 @@ const TableData = () => {
             <img
          
               className="img-whp cover"
-              src={item.img}
+              src={`${API_URL}${item.imageUrls[0]}`}
               alt="fp1.jpg"
             />
             <div className="thmb_cntnt">
@@ -33,10 +75,10 @@ const TableData = () => {
               <h4>{item.title}</h4>
               <p>
                 <span className="flaticon-placeholder"></span>
-                {item.location}
+                {item.location.address}
               </p>
               <a className="fp_price text-thm" href="#">
-                ${item.price}
+                Rs.{item.price}
                 <small>/mo</small>
               </a>
             </div>
@@ -45,11 +87,11 @@ const TableData = () => {
       </td>
       {/* End td */}
 
-      <td>30 December, 2020</td>
+      <td>{item.createdAt.slice(0, 10)}</td>
       {/* End td */}
 
       <td>
-        <span className="status_tag badge">Pending</span>
+        <span className="status_tag badge">Active</span>
       </td>
       {/* End td */}
 
@@ -75,6 +117,7 @@ const TableData = () => {
             data-toggle="tooltip"
             data-placement="top"
             title="Delete"
+            onClick={() => handleDeleteSubmit(item._id)}
           >
             <a href="#">
               <span className="flaticon-garbage"></span>

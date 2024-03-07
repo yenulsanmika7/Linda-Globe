@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link , useLocation } from "react-router-dom";
 import MyAccount from "./dashboard/MyAccount"
 import { getUserData } from "@/actions/userActions";
@@ -13,7 +13,7 @@ const HeaderMenuContent = ({ float = "" }) => {
   const userToken = localStorage.getItem('USER-TOKEN');
   const { user } = useSelector((state) => state.userLogin);
 
-  console.log(userToken, user);
+  // console.log(userToken, user);
     
   useEffect(() => {
     if (userToken && !user) {
@@ -53,79 +53,9 @@ const HeaderMenuContent = ({ float = "" }) => {
         {
           name: "Grid v1",
           routerPath: "/listing-grid-v1",
-        },
-        {
-          name: "Grid v2",
-          routerPath: "/listing-grid-v2",
-        },
-        {
-          name: "Grid v3",
-          routerPath: "/listing-grid-v3",
-        },
-        {
-          name: "Grid v4",
-          routerPath: "/listing-grid-v4",
-        },
-        {
-          name: "Grid v5",
-          routerPath: "/listing-grid-v5",
-        },
-        {
-          name: "Grid v6",
-          routerPath: "/listing-grid-v6",
-        },
+        },        
       ],
-    },
-    {
-      id: 2,
-      title: "Listing List",
-      items: [
-        {
-          name: "List V1",
-          routerPath: "/listing-list-v1",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Listing Style",
-      items: [
-        {
-          name: "Parallax Style",
-          routerPath: "/parallax-style",
-        },
-        {
-          name: "Slider Style",
-          routerPath: "/slider-style",
-        },
-        {
-          name: "Map Header",
-          routerPath: "/map-header",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Listing Half",
-      items: [
-        {
-          name: "Map V1",
-          routerPath: "/listing-map-v1",
-        },
-        {
-          name: "Map V2",
-          routerPath: "/listing-map-v2",
-        },
-        {
-          name: "Map V3",
-          routerPath: "/listing-map-v3",
-        },
-        {
-          name: "Map V4",
-          routerPath: "/listing-map-v4",
-        },
-      ],
-    },
+    },    
     {
       id: 5,
       title: "Agent View",
@@ -169,10 +99,6 @@ const HeaderMenuContent = ({ float = "" }) => {
       id: 1,
       title: "User Admin",
       items: [
-        {
-          name: "Dashboard",
-          routerPath: "/my-dashboard",
-        },
         {
           name: "My Properties",
           routerPath: "/my-properties",

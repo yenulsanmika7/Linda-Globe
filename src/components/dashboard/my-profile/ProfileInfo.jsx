@@ -1,13 +1,43 @@
-
-
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {  toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { profilePicUpdate } from "@/actions/userActions";
 
 const ProfileInfo = () => {
-    const [profile, setProfile] = useState(null);
+    const dispatch = useDispatch();
 
+    const { user } = useSelector((state) => state.userLogin);
+
+    const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
+  
     // upload profile
     const uploadProfile = (e) => {
-        setProfile(e.target.files[0]);
+        const file = e.target.files[0];
+        if (file) {
+            const formData = new FormData()
+            formData.append('profileImage', file)
+            // eslint-disable-next-line react/prop-types
+            formData.append('email', user.email)
+      
+            profilePicUpdate(formData, dispatch)
+              .then(() => {
+                console.log("Image updated!")
+                window.location.reload();         
+              })
+              .catch(() => {
+                toast.error('Try again later!', {
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Bounce,
+                });
+              })
+          }
     };
 
     return (
@@ -17,16 +47,13 @@ const ProfileInfo = () => {
                     <input
                         type="file"
                         id="image1"
-                        accept="image/png, image/gif, image/jpeg"
                         onChange={uploadProfile}
                     />
                     <label
                         style={
-                            profile !== null
+                            user !== null
                                 ? {
-                                      backgroundImage: `url(${URL.createObjectURL(
-                                          profile
-                                      )})`,
+                                      backgroundImage: `${API_URL}${user.profileImageUrl}`,
                                   }
                                 : undefined
                         }

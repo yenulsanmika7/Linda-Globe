@@ -1,10 +1,22 @@
-const AllStatistics = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { allProperties } from "@/actions/propertyActions";
+
+const AllStatistics = () => {  
+  const dispatch = useDispatch();
+  const { properties } = useSelector((state) => state.allProperties);  
+  console.log(properties);
+  
+  useEffect(() => {
+    allProperties(dispatch)
+  }, [dispatch])
+
   const allStatistics = [
     {
       id: 1,
       blockStyle: "",
       icon: "flaticon-home",
-      timer: "37",
+      timer: properties.length,
       name: "All Properties",
     },
     {

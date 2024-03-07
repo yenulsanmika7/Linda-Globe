@@ -1,12 +1,19 @@
-
-
 import { useState } from "react";
 import selectedFiles from "../../../utils/selectedFiles";
+import PropTypes from 'prop-types';
+import {  toast, Bounce } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import { createProperty } from '../../../actions/propertyActions';
+import { useDispatch, useSelector } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
 
-
-const PropertyMediaUploader = () => {
+const PropertyMediaUploader = ({ formData }) => {  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [propertySelectedImgs, setPropertySelectedImgs] = useState([]);
 
+  const { user } = useSelector((state) => state.userLogin);
+  
   // multiple image select
   const multipleImage = (e) => {
     // checking is same file matched with old stored array
@@ -26,6 +33,37 @@ const PropertyMediaUploader = () => {
     const deleted = propertySelectedImgs?.filter((file) => file.name !== name);
     setPropertySelectedImgs(deleted);
   };
+
+  const handleAddProperty = (event) => {
+    event.preventDefault();
+
+    if (propertySelectedImgs.length > 0) {
+      propertySelectedImgs.forEach((imageFile) => {
+        formData.append('propertyImages', imageFile); 
+      });
+
+      formData.append('email', user.email)
+
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      } 
+
+      createProperty(formData, dispatch, navigate)        
+    } 
+    else {
+      toast.error('Please select atleast one image!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });  
+    }
+  }
 
   return (
     <div className="row">
@@ -68,6 +106,7 @@ const PropertyMediaUploader = () => {
             type="file"
             onChange={multipleImage}
             multiple
+            name="images"
             accept="image/png, image/gif, image/jpeg"
           />
           <div className="icon">
@@ -95,12 +134,16 @@ const PropertyMediaUploader = () => {
       <div className="col-xl-12">
         <div className="my_profile_setting_input">
           <button className="btn btn1 float-start">Back</button>
-          <button className="btn btn2 float-end">Next</button>
+          <button className="btn btn2 float-end" onClick={handleAddProperty}>Add</button>
         </div>
       </div>
       {/* End .col */}
     </div>
   );
+};
+
+PropertyMediaUploader.propTypes = {
+  formData: PropTypes.instanceOf(FormData).isRequired,
 };
 
 export default PropertyMediaUploader;
