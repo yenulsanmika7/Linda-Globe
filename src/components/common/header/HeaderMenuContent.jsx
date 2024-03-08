@@ -13,8 +13,6 @@ const HeaderMenuContent = ({ float = "" }) => {
 
   const userToken = localStorage.getItem('USER-TOKEN');
   const { user } = useSelector((state) => state.userLogin);
-
-  // console.log(userToken, user);
     
   useEffect(() => {
     if (userToken && !user) {
@@ -33,6 +31,8 @@ const HeaderMenuContent = ({ float = "" }) => {
   }, [dispatch])
 
   const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
+
+  console.log(API_URL + user.profileImageUrl)
 
   const home = [
     // { id: 2, name: "Home 2", routerPath: "/home-2" },
@@ -414,21 +414,20 @@ const HeaderMenuContent = ({ float = "" }) => {
 
       { user === null ? (
           <li className={`list-inline-item list_s ${float}`}>
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="btn flaticon-user"
               data-bs-toggle="modal"
               data-bs-target=".bd-example-modal-lg"
             >
               <span className="dn-lg">Login/Register</span>
-            </a>
+            </Link>
         </li>
       ) : (
         <li className="user_setting">
           <div className="dropdown">
             <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
-              <img
-              
+              <img              
                 className="rounded-circle"
                 src={`${API_URL}${user.profileImageUrl}`}
                 alt="Profile Image"
