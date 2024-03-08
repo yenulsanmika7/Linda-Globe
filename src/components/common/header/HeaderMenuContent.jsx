@@ -32,7 +32,9 @@ const HeaderMenuContent = ({ float = "" }) => {
 
   const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
 
-  // console.log(API_URL + user.profileImageUrl)
+  if (user) {
+    console.log(API_URL + user.profileImageUrl)
+  }
 
   const home = [
     // { id: 2, name: "Home 2", routerPath: "/home-2" },
