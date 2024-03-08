@@ -45,7 +45,7 @@ export const login = async (loginData, dispatch) => {
         .catch(error => {
             dispatch({
                 type: USER_LOGIN_FAIL,
-                payload: error.response ? error.response.data : 'Could not login to the website'
+                message: error.message ? error.response : 'Could not login to the website'
             });
         });
 }
