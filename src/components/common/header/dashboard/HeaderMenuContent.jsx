@@ -488,14 +488,14 @@ const HeaderMenuContent = ({ float = "" }) => {
 
       { user === null ? (
           <li className={`list-inline-item list_s ${float}`}>
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="btn flaticon-user"
               data-bs-toggle="modal"
               data-bs-target=".bd-example-modal-lg"
             >
               <span className="dn-lg">Login/Register</span>
-            </a>
+            </Link>
         </li>
       ) : (
         <li className="user_setting">
