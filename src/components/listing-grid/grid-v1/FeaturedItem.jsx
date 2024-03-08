@@ -1,10 +1,8 @@
-
-
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addLength } from "../../../features/properties/propertiesSlice";
+import { getPropertyDetails } from "@/actions/propertyActions";
 
 const API_URL = import.meta.env.VITE_NODE_BACKEND_URL; 
 
@@ -27,9 +25,21 @@ const FeaturedItem = () => {
   );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { properties } = useSelector((state) => state.allProperties);
-  console.log("Properties", properties);
+  const { error } = useSelector((state) => state.getProperty)
+
+  const handlePropertyDetails = (id) => {
+    getPropertyDetails(id, dispatch)
+    .then(() => {
+      if (error !== null) {
+        navigate('/404');
+      } else {
+        navigate(`/property/${id}`);
+      }
+    })
+  }
 
   let content;
   if (properties && Array.isArray(properties)) {
@@ -91,7 +101,7 @@ const FeaturedItem = () => {
               </ul>
 
               <Link
-                to={`/listing-details-v1/${item.id}`}
+                onClick={() => handlePropertyDetails(item._id)}
                 className="fp_price"
               >
                 ${item.price}
@@ -103,7 +113,7 @@ const FeaturedItem = () => {
             <div className="tc_content">
               <p className="text-thm">{item.type}</p>
               <h4>
-                <Link to={`/listing-details-v1/${item.id}`}>
+                <Link onClick={() => handlePropertyDetails(item._id)}>
                   {item.title}
                 </Link>
               </h4>

@@ -29,13 +29,7 @@ const HeaderMenuContent = ({ float = "" }) => {
   }, [dispatch, userToken, user]); 
 
   useEffect(() => {
-    allProperties(dispatch)
-      .then(() => {
-        console.log("Get property data successfully!");
-      })
-      .catch(() => {
-        console.log("Error while getting property data!")
-      })
+    allProperties(dispatch);      
   }, [dispatch])
 
   const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
@@ -514,7 +508,7 @@ const HeaderMenuContent = ({ float = "" }) => {
                 alt="Profile Image"
                 style={{ cursor: 'pointer', width: '45px', height: '45px' }}
               />
-              <span className="dn-1199 ms-1">Yenul_San</span>
+              <span className="dn-1199 ms-1">{user.username}</span>
             </a>
             <div className="dropdown-menu">
               <MyAccount user={user} />

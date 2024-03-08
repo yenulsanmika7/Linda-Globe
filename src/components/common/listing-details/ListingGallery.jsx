@@ -5,12 +5,12 @@ import "photoswipe/dist/photoswipe.css";
 import propertiesContent from "../../../data/properties";
 
 
-const ListingGallery = () => {
+const ListingGallery = ({ property }) => {
   return (
     <>
       <Gallery>
-        {propertiesContent.slice(36, 37).map((singleItem) => (
-          <div key={singleItem.id}>
+        {property.imageUrls.map((singleItem) => (
+          <div key={singleItem}>
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">

@@ -14,6 +14,10 @@ import {
     PROFILE_PIC_UPDATE_SUCCESS,
     PROFILE_PIC_UPDATE_FAIL,
 
+    USER_UPDATE_REQUEST,
+    USER_UPDATE_SUCCESS,
+    USER_UPDATE_FAIL,
+
     GET_USER_DATA_REQUEST,
     GET_USER_DATA_SUCCESS,
     GET_USER_DATA_FAIL,
@@ -126,4 +130,30 @@ export const getUserData = async (dispatch) => {
         });
         dispatch(logout());
     });
+}
+
+export const updateUser = async (updatedData, dispatch) => {
+    dispatch({ type: USER_UPDATE_REQUEST });
+
+    const secret_token = localStorage.getItem("USER-TOKEN")
+    const url = `${API_URL}/user/updateUser`;
+
+    await axios.put(url, updatedData, {        
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${secret_token}`,
+        }
+    })
+    .then(({ data }) => {
+        dispatch({
+            type: USER_UPDATE_SUCCESS,
+            user: data.payload,
+        })
+    })
+    .catch((error) => {
+        dispatch({
+            type: USER_UPDATE_FAIL,
+            payload: error.message ? error.message : 'Could not update the user',
+        })
+    })
 }

@@ -9,11 +9,11 @@ const PropertyDescriptions = ({property}) => {
   return (
     <>
       <p className="mb25">
-      {property.First_para}
+      {property.description.slice(0, 150)}
 
       </p>
       <p className={click ? "gpara second_para white_goverlay mt10 mb10" : ""}>
-      {property.Second_para}
+      {property.description.slice(50, property.description.length)}
       </p>
       <div className="collapse" id="collapseExample">
         <div className="card card-body">

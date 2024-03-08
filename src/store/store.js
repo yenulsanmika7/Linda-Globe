@@ -4,9 +4,9 @@ import filterSlice from "../features/filter/filterSlice";
 import propertiesSlice from "../features/properties/propertiesSlice";
 
 import { configureStore } from "@reduxjs/toolkit";
-import { userSignUpReducer, userLoginReducer } from "@/reducers/userReducers";
+import { userSignUpReducer, userLoginReducer, updateUserReducer } from "@/reducers/userReducers";
 import { otpVerificationReducer } from "@/reducers/otpReducers";
-import { propertyCreateReducer, allPropertiesReducer, propertyDeleteReducer } from "@/reducers/propertyReducers";
+import { propertyCreateReducer, allPropertiesReducer, propertyDetailsReducer, propertyDeleteReducer, searchPropertiesReducer } from "@/reducers/propertyReducers";
 
 const store = configureStore({
     reducer: {
@@ -17,11 +17,14 @@ const store = configureStore({
 
         userSignUp: userSignUpReducer,
         userLogin: userLoginReducer,
-        otpVerification: otpVerificationReducer,
+        otpVerification: otpVerificationReducer,  
+        userUpdate: updateUserReducer,
 
         allProperties: allPropertiesReducer,  
+        searchProperty: searchPropertiesReducer,
+        getProperty: propertyDetailsReducer,
         propertyCreate: propertyCreateReducer,        
-        propertyDelete: propertyDeleteReducer,      
+        propertyDelete: propertyDeleteReducer,    
     }
 })
 

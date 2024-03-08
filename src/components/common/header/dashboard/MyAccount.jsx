@@ -75,7 +75,7 @@ const MyAccount = () => {
   }
 
   const profileMenuItems = [
-    { id: 1, name: "My Profile", ruterPath: "/my-profile" },
+    { id: 1, name: "My Profile", ruterPath: "/profile" },
     { id: 2, name: " My Message", ruterPath: "/my-message" },
     { id: 3, name: " My Favourite", ruterPath: "/my-favourites" },
     { id: 4, name: " My Package", ruterPath: "/my-package" },

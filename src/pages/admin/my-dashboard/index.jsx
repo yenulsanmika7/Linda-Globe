@@ -1,6 +1,4 @@
-
 import MyDashboard from "@/components/dashboard/my-dashboard";
-
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {

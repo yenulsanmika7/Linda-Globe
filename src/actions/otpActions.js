@@ -7,12 +7,13 @@ import {
 } from '../constants/otpTypes';
 
 // eslint-disable-next-line no-undef
-const API_URL = import.meta.env.NODE_BACKEND_URL; 
+const API_URL = import.meta.env.VITE_NODE_BACKEND_URL; 
 
 export const otpVerifiy = (email, dispatch) => {
     dispatch({ loading: true, type: OTP_CODE_REQUEST });
 
     const url = `${API_URL}/auth/sendOTP`;
+    console.log(url)
 
     return axios.post(url, email) 
         .then(({ data }) => {

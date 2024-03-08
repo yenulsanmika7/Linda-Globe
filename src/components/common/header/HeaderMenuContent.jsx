@@ -5,6 +5,7 @@ import MyAccount from "./dashboard/MyAccount"
 import { getUserData } from "@/actions/userActions";
 
 import ToastContainer from '../../../components/ToastContainer';
+import { allProperties } from '@/actions/propertyActions';
 
 const HeaderMenuContent = ({ float = "" }) => {    
   const { pathname } = useLocation();  
@@ -26,6 +27,10 @@ const HeaderMenuContent = ({ float = "" }) => {
         })
     }  
   }, [dispatch, userToken, user]);  
+
+  useEffect(() => {
+    allProperties(dispatch);      
+  }, [dispatch])
 
   const API_URL = import.meta.env.VITE_NODE_BACKEND_URL;  
 
@@ -429,7 +434,7 @@ const HeaderMenuContent = ({ float = "" }) => {
                 alt="Profile Image"
                 style={{ cursor: 'pointer', width: '45px', height: '45px' }}
               />
-              <span className="dn-1199 ms-1">Yenul_San</span>
+              <span className="dn-1199 ms-1">{user.username}</span>
             </a>
             <div className="dropdown-menu">
               <MyAccount user={user} />
@@ -440,7 +445,7 @@ const HeaderMenuContent = ({ float = "" }) => {
 
       {/* End .dropitem */}
 
-      { user && (
+      { user && user.role === "Admin" && (
         <li className={`list-inline-item add_listing ${float}`}>
          <Link to="/create-listing">
            <span className="flaticon-plus"></span>

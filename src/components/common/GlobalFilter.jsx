@@ -1,20 +1,33 @@
-
-
 import {
   addKeyword,
   addLocation,
 } from "../../features/properties/propertiesSlice";
+import { useState } from "react";
 import PricingRangeSlider from "./PricingRangeSlider";
 import CheckBoxFilter from "./CheckBoxFilter";
 import GlobalSelectBox from "./GlobalSelectBox";
 
 import {useNavigate} from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { searchProperties } from "@/actions/propertyActions"
+
 const GlobalFilter = ({ className = "" }) => {
   const navigate = useNavigate();
+  const dispatch =  useDispatch();
+
+  const [keyword, setKeyword] = useState('');
+  const { error } = useSelector((state) => state.searchProperty)
     
   // submit handler
   const submitHandler = () => {
-    navigate("/listing-grid-v1");
+    searchProperties(keyword, dispatch)
+    .then(() => {
+      if (error === null) {        
+        navigate(`/search?keyword=${keyword}`);
+      } else {
+        navigate('/404')
+      }
+    })
   };
 
   return (
@@ -26,7 +39,8 @@ const GlobalFilter = ({ className = "" }) => {
               type="text"
               className="form-control"
               placeholder="Enter keyword..."
-              onChange={(e) => dispatch(addKeyword(e.target.value))}
+              onChange={(event) => setKeyword(event.target.value)}
+              value={keyword}
             />
           </div>
         </li>

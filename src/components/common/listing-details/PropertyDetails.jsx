@@ -1,28 +1,23 @@
-const PropertyDetails = () => {
+const PropertyDetails = ({ property }) => {
   return (
     <>
       <div className="col-md-6 col-lg-6 col-xl-4">
         <ul className="list-inline-item">
           <li>
             <p>
-              Property ID : <span>HZ27</span>
+              Property ID : <span>{property._id.slice(0, 10)}</span>
             </p>
           </li>
           <li>
             <p>
-              Price : <span>$130,000</span>
+              Price : <span>{property.price}</span>
             </p>
           </li>
           <li>
             <p>
-              Property Size : <span>1560 Sq Ft</span>
+              Property Size : <span>{property?.area || 'Not given'}</span>
             </p>
-          </li>
-          <li>
-            <p>
-              Year Built : <span>2016-01-09</span>
-            </p>
-          </li>
+          </li>          
         </ul>
       </div>
       {/* End .col */}
@@ -31,24 +26,14 @@ const PropertyDetails = () => {
         <ul className="list-inline-item">
           <li>
             <p>
-              Bedrooms : <span>8</span>
+              Bedrooms : <span>{property.bedrooms}</span>
             </p>
           </li>
           <li>
             <p>
-              Bathrooms : <span>4</span>
+              Bathrooms : <span>{property.bathrooms}</span>
             </p>
-          </li>
-          <li>
-            <p>
-              Garage : <span>2</span>
-            </p>
-          </li>
-          <li>
-            <p>
-              Garage Size : <span>200 SqFt</span>
-            </p>
-          </li>
+          </li>          
         </ul>
       </div>
       {/* End .col */}
@@ -57,7 +42,7 @@ const PropertyDetails = () => {
         <ul className="list-inline-item">
           <li>
             <p>
-              Property Type : <span>Apartment</span>
+              Property Type : <span>{property.type}</span>
             </p>
           </li>
           <li>

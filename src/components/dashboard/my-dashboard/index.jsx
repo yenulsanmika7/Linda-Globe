@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "../../common/header/dashboard/Header";
 import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
@@ -5,10 +6,18 @@ import Activities from "./Activities";
 import AllStatistics from "./AllStatistics";
 import StatisticsChart from "./StatisticsChart";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Index = () => {
   const { user } = useSelector((state) => state.userLogin);
-  console.log(user);
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user === null || user.role !== "Admin") {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
     <>

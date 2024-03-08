@@ -1,3 +1,4 @@
+
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import Header from "../common/header/DefaultHeader";
@@ -7,7 +8,8 @@ import PopupSignInUp from "../common/PopupSignInUp";
 import DetailsContent from "./DetailsContent";
 import Sidebar from "./Sidebar";
 
-const index = () => {
+const Index = () => {  
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -22,7 +24,7 @@ const index = () => {
       {/* <!-- Listing Single Property --> */}
       <section className="listing-title-area mt85 md-mt0">
         <div className="container">
-          <ListingGallery />
+          <ListingGallery property={property} />
         </div>
       </section>
 
@@ -31,12 +33,12 @@ const index = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-8">
-              <DetailsContent />
+              <DetailsContent property={property} />
             </div>
             {/* End details content .col-lg-8 */}
 
             <div className="col-lg-4 col-xl-4">
-              <Sidebar />
+              <Sidebar property={property} />
             </div>
             {/* End sidebar content .col-lg-4 */}
           </div>
@@ -63,4 +65,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

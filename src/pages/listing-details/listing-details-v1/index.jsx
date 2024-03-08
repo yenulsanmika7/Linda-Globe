@@ -1,16 +1,13 @@
-
-
+import { useSelector } from "react-redux";
 import "photoswipe/dist/photoswipe.css";
 import CopyrightFooter from "@/components/common/footer/CopyrightFooter";
 import Footer from "@/components/common/footer/Footer";
 import Header from "@/components/common/header/DefaultHeader";
 import MobileMenu from "@/components/common/header/MobileMenu";
 import PopupSignInUp from "@/components/common/PopupSignInUp";
-import properties from "@/data/properties";
 import DetailsContent from "@/components/listing-details-v1/DetailsContent";
 import Sidebar from "@/components/listing-details-v1/Sidebar";
 import ListingOne from "@/components/listing-single/ListingOne";
-import {useParams} from 'react-router-dom'
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
@@ -20,14 +17,11 @@ const metadata = {
 }
 
 const ListingDynamicDetailsV1 = () => {
-  let params = useParams();
- 
-  const id = params.id;
-  const property = properties?.find((item) => item.id == id) || properties[0]
+  const { property } = useSelector((state) => state.getProperty);
 
   return (
     <>
-        <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       {/* <!-- Main Header Nav --> */}
       <Header />
 
@@ -39,7 +33,6 @@ const ListingDynamicDetailsV1 = () => {
 
       {/* <!-- Listing Single Property --> */}
       <ListingOne property={property} />
-    
 
       {/* <!-- Agent Single Grid View --> */}
       <section className="our-agent-single bgc-f7 pb30-991">

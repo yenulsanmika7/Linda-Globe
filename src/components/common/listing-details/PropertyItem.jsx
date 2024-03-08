@@ -1,17 +1,16 @@
-const PropertyItem = ({property}) => {
+// eslint-disable-next-line react/prop-types
+const PropertyItem = ({ property }) => {
+  console.log(property)
   return (
     <ul className="mb0">
       <li className="list-inline-item">
-        <a href="#">Apartment</a>
+        <a href="#">{property.type}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Beds: {property?.itemDetails[0].number}</a>
+        <a href="#">Beds: {property.bedrooms}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Baths: {property?.itemDetails[1].number}</a>
-      </li>
-      <li className="list-inline-item">
-        <a href="#">Sq Ft: {property?.itemDetails[2].number}</a>
+        <a href="#">Baths: {property?.bathrooms}</a>
       </li>
     </ul>
   );
