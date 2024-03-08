@@ -30,6 +30,7 @@ export const login = async (loginData, dispatch) => {
     dispatch({ loading: true, type: USER_LOGIN_REQUEST })
 
     const url = `${API_URL}/auth/signIn`;
+    console.log(url);
 
     axios.post(url, loginData)
         .then(({ data }) => {
